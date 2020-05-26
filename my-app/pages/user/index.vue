@@ -107,7 +107,8 @@
 							data: {
 								logintype:"mini",code:loginRes.code},
 							success: res => {
-								console.log("ss",res)
+								// console.log("ss",res)
+								console.log("1111",res)
 							},
 							fail: () => {},
 							complete: () => {}
