@@ -109,6 +109,7 @@
 							success: res => {
 								// console.log("ss",res)
 								console.log("1111",res)
+								console.log("2222",res)
 							},
 							fail: () => {},
 							complete: () => {}
