@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///D:/work/applet/my-app/main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA,wCAAmB;AACnB;AACA,gN;AACAA,UAAU,CAACC,gBAAD,CAAV,C","file":"pages/index/approve.js","sourcesContent":["import 'uni-pages';import '@dcloudio/uni-stat';\nimport Vue from 'vue'\nimport Page from './pages/index/approve.vue'\ncreatePage(Page)"],"sourceRoot":""}
