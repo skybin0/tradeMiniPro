@@ -112,15 +112,6 @@
 								console.log("2222",res)
 								console.log("33333",res)
 								console.log("4444",res)
-<<<<<<< HEAD
-								console.log("5555",res)
-								console.log("66666",res)
-=======
-								console.log("5555",res)
-								console.log("66666",res)
-								console.log("66666",res)
-								console.log("77777",res)
->>>>>>> 12993daa65051ac026f36b0c68bae394210a569d
 							},
 							fail: () => {},
 							complete: () => {}
