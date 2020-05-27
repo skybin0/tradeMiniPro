@@ -296,7 +296,8 @@
 	margin: 20rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
-	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	        border-radius: 10px;
 }
 .home-header{
 	height: 300rpx;
@@ -319,7 +320,8 @@
 	width: 100rpx;
 	height: 100rpx;
 	margin-bottom: 15rpx;
-	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
 }
 .home-header .btn-text{
 	width: 100%;

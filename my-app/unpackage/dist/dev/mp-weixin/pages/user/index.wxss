@@ -47,7 +47,8 @@
   display: block;
   width: 160rpx;
   height: 160rpx;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.7);
   margin: 0 auto 16rpx;
@@ -87,7 +88,8 @@ button.cell-item-hd:after {
   width: 180rpx;
   height: 50rpx;
   line-height: 50rpx;
-  border-radius: 25rpx;
+  -webkit-border-radius: 25rpx;
+          border-radius: 25rpx;
   background: #ff7159;
   font-size: 12px;
 }

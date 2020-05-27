@@ -6,6 +6,7 @@
 .login-button {
 		background: #E3162E;
 		color: #FFFFFF;
-		border-radius: 44rpx;
+		-webkit-border-radius: 44rpx;
+		        border-radius: 44rpx;
 }
 
