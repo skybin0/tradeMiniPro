@@ -7720,9 +7720,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 21:
-/*!**************************************************************!*\
-  !*** F:/tradeMiniPro/my-app/components/u-charts/u-charts.js ***!
-  \**************************************************************/
+/*!*****************************************************************!*\
+  !*** D:/work/applet_git/my-app/components/u-charts/u-charts.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12778,9 +12778,9 @@ if ( true && typeof module.exports === "object") {
 /***/ }),
 
 /***/ 22:
-/*!************************************************!*\
-  !*** F:/tradeMiniPro/my-app/common/checker.js ***!
-  \************************************************/
+/*!***************************************************!*\
+  !*** D:/work/applet_git/my-app/common/checker.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -12809,9 +12809,9 @@ module.exports = {
 /***/ }),
 
 /***/ 250:
-/*!************************************************************!*\
-  !*** F:/tradeMiniPro/my-app/components/uni-icons/icons.js ***!
-  \************************************************************/
+/*!***************************************************************!*\
+  !*** D:/work/applet_git/my-app/components/uni-icons/icons.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12982,9 +12982,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!*****************************************!*\
-  !*** F:/tradeMiniPro/my-app/pages.json ***!
-  \*****************************************/
+/*!********************************************!*\
+  !*** D:/work/applet_git/my-app/pages.json ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13891,9 +13891,9 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ }),
 
 /***/ 7:
-/*!**********************************************************!*\
-  !*** F:/tradeMiniPro/my-app/pages.json?{"type":"style"} ***!
-  \**********************************************************/
+/*!*************************************************************!*\
+  !*** D:/work/applet_git/my-app/pages.json?{"type":"style"} ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13903,9 +13903,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 8:
-/*!*********************************************************!*\
-  !*** F:/tradeMiniPro/my-app/pages.json?{"type":"stat"} ***!
-  \*********************************************************/
+/*!************************************************************!*\
+  !*** D:/work/applet_git/my-app/pages.json?{"type":"stat"} ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
