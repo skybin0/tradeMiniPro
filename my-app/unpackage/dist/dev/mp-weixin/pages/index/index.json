@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "商贸审批系统",
-  "usingComponents": {
-    "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar"
-  }
-}

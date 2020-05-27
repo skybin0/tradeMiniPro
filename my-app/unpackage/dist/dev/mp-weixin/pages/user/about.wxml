@@ -1,1 +1,0 @@
-<view class="about"><view class="content"><view class="qrcode"><image src="../../static/logo.png" data-event-opts="{{[['longtap',[['save',['$event']]]]]}}" bindlongtap="__e"></image><text class="tip">扫码体验小程序</text></view><view class="desc">该小程序是一个基于<text class="code">商贸运营系统</text>电脑版的微信小程序版。</view></view></view>
