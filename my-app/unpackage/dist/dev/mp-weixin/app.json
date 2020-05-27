@@ -8,11 +8,16 @@
     "pages/index/wlDetail",
     "pages/index/kcDetail",
     "pages/report/index",
-    "pages/report/inventory",
-    "pages/report/cash",
+    "pages/report/inventorySummary",
+    "pages/report/dailyInventory",
+    "pages/report/assetResume",
+    "pages/report/cashPool",
+    "pages/report/billPool",
     "pages/report/payment",
-    "pages/report/paydetail",
+    "pages/report/paymentDetail",
     "pages/report/collection",
+    "pages/info/index",
+    "pages/info/infodetail",
     "pages/user/index",
     "pages/user/feedback",
     "pages/user/about",
@@ -60,6 +65,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap53.json"
+  "usingComponents": {}
 }

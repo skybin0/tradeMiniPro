@@ -5,15 +5,18 @@
 			<view class="qiun-title-dot-light">页面地址</view>
 		</view>
 		<view class="qiun-bg-white qiun-padding">
-		    <text>pages/basic/column/rotate</text>
+		    <text>pages/basic/column/stack</text>
 		</view>
 		<!--#endif-->
+		<view class="qiun-bg-white qiun-title-bar qiun-common-mt" >
+			<view class="qiun-title-dot-light">每日库存明细</view>
+		</view>
 		<view class="qiun-charts-rotate" >
 			<!--#ifdef MP-ALIPAY -->
-			<canvas canvas-id="canvasColumn" id="canvasColumn" class="charts-rotate" :width="cWidth2*pixelRatio" :height="cHeight2*pixelRatio" :style="{'width':cWidth2+'px','height':cHeight2+'px'}" @touchstart="touchColumn"></canvas>
+			<canvas canvas-id="canvasColumnStack" id="canvasColumnStack" class="charts-rotate" :width="cWidth2*pixelRatio" :height="cHeight2*pixelRatio" :style="{'width':cWidth2+'px','height':cHeight2+'px'}" @touchstart="touchColumn"></canvas>
 			<!--#endif-->
 			<!--#ifndef MP-ALIPAY -->
-			<canvas canvas-id="canvasColumn" id="canvasColumn" class="charts-rotate" @touchstart="touchColumn"></canvas>
+			<canvas canvas-id="canvasColumnStack" id="canvasColumnStack" class="charts-rotate"  @touchstart="touchColumn"></canvas>
 			<!--#endif-->
 		</view>
 		<!--#ifdef H5 -->
@@ -37,8 +40,8 @@
 	export default {
 		data() {
 			return {
-				cWidth2:'',//横屏图表
-				cHeight2:'',//横屏图表
+				cWidth2:'',
+				cHeight2:'',
 				pixelRatio:1,
 				textarea:''
 			}
@@ -67,22 +70,21 @@
 					data:{
 					},
 					success: function(res) {
-						// console.log(res.data.data)
-						let ColumnColumn={categories:[],series:[]};
+						console.log(res.data.data)
+						let ColumnStack={categories:[],series:[]};
 						//这里我后台返回的是数组，所以用等于，如果您后台返回的是单条数据，需要push进去
-						// ColumnColumn.categories=res.data.data.ColumnB.categories;
-						// ColumnColumn.series=res.data.data.ColumnB.series;
-						ColumnColumn.categories=['现有库存','上期结存','本期入库','本期出库','本期在途','可派货量']
-						ColumnColumn.series= [{data: [15.4500,20.2480,45.6790,37.6790,43.5679,34.4324],name: "库存"}]
-						_self.textarea = JSON.stringify(res.data.data.ColumnB);
-						_self.showColumnColumn("canvasColumn",ColumnColumn);
+						console.log(res.data.data.ColumnStack)
+						ColumnStack.categories=["辽宁兰德", "辽宁亿泽", "忠旺集团", "弘丰铝业", "荣新金属材料", "锦文贸融供应链"]
+						ColumnStack.series=[{name:'中外运张华浜库',data: [15.4500,20.2480,45.6790,37.6790,43.5679,34.4324]},{name:'广东中金小塘西库',data: [15.4500,20.2480,45.6790,37.6790,43.5679,34.4324]},{name:'广东南储小塘西库',data: [15.4500,20.2480,45.6790,37.6790,43.5679,34.4324]}]
+						_self.textarea = JSON.stringify(res.data.data.ColumnStack);
+						_self.showColumnStack("canvasColumnStack",ColumnStack);
 					},
 					fail: () => {
 						_self.tips="网络错误，小程序端请检查合法域名";
 					},
 				});
 			},
-			showColumnColumn(canvasId,chartData){
+			showColumnStack(canvasId,chartData){
 				canvaColumn=new uCharts({
 					$this:_self,
 					canvasId: canvasId,
@@ -94,14 +96,14 @@
 						lineHeight:11,
 						margin:0,
 					},
-					fontSize:11,
-					background:'#FFFFFF',
-					pixelRatio:_self.pixelRatio,
-					animation: false,
 					rotate:true,
 					// #ifdef MP-ALIPAY
 					rotateLock:true,//百度及支付宝需要锁定旋转
 					// #endif
+					fontSize:11,
+					background:'#FFFFFF',
+					pixelRatio:_self.pixelRatio,
+					animation: true,
 					categories: chartData.categories,
 					series: chartData.series,
 					xAxis: {
@@ -109,27 +111,21 @@
 					},
 					yAxis: {
 						//disabled:true
-						format:(val)=>{return val.toFixed(0)+'吨'}//如不写此方法，Y轴刻度默认保留两位小数
 					},
 					dataLabel: true,
 					width: _self.cWidth2*_self.pixelRatio,
 					height: _self.cHeight2*_self.pixelRatio,
 					extra: {
 						column: {
-							type:'group',
-							width: _self.cWidth2*_self.pixelRatio*0.45/chartData.categories.length,
-							meter:{
-								//这个是外层边框的宽度
-								border:4,
-								//这个是内部填充颜色
-								fillColor:'#E5FDC3'
-							}
+							type:'stack',
+							width: _self.cWidth2*_self.pixelRatio*0.5/chartData.categories.length
 						}
 					  }
 				});
 				
 			},
 			touchColumn(e){
+				canvaColumn.touchLegend(e);
 				canvaColumn.showToolTip(e, {
 					format: function (item, category) {
 						return category + ' ' + item.name + ':' + item.data 
@@ -155,6 +151,18 @@
 </script>
 
 <style>
+	/*样式的width和height一定要与定义的cWidth和cHeight相对应*/
+	.qiun-charts {
+		width: 750upx;
+		height: 500upx;
+		background-color: #FFFFFF;
+	}
+	
+	.charts {
+		width: 750upx;
+		height: 500upx;
+		background-color: #FFFFFF;
+	}
 	/*样式的width和height一定要与定义的cWidth和cHeight相对应*/
 	.qiun-charts-rotate {
 		width: 700upx;
