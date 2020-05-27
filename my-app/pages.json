@@ -175,7 +175,7 @@
 					"iconPath": "static/in-list.png",
 	                "text": "报表"
 	            }, {
-	                "pagePath": "pages/index/index",
+	                "pagePath": "pages/info/index",
 	                "selectedIconPath": "static/message.png",
 					"iconPath": "static/in-message.png",
 	                "text": "消息"
