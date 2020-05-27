@@ -112,7 +112,12 @@
 								console.log("2222",res)
 								console.log("33333",res)
 								console.log("4444",res)
+<<<<<<< HEAD
 								console.log("77777",res)
+=======
+								console.log("5555",res)
+								console.log("66666",res)
+>>>>>>> tangqin
 							},
 							fail: () => {},
 							complete: () => {}
