@@ -757,7 +757,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7221,7 +7221,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7242,14 +7242,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7325,7 +7325,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7720,9 +7720,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 21:
-/*!*************************************************************!*\
-  !*** D:/work/applet/my-app/components/u-charts/u-charts.js ***!
-  \*************************************************************/
+/*!**************************************************************!*\
+  !*** F:/tradeMiniPro/my-app/components/u-charts/u-charts.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12777,10 +12777,41 @@ if ( true && typeof module.exports === "object") {
 
 /***/ }),
 
-/***/ 210:
-/*!***********************************************************!*\
-  !*** D:/work/applet/my-app/components/uni-icons/icons.js ***!
-  \***********************************************************/
+/***/ 22:
+/*!************************************************!*\
+  !*** F:/tradeMiniPro/my-app/common/checker.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  error: '',
+  isJSON: function isJSON(str) {
+    if (typeof str == 'string') {
+      try {
+        var obj = JSON.parse(str);
+        if (typeof obj == 'object' && obj) {
+          return true;
+        } else {
+          return false;
+        }
+      } catch (e) {
+        console.log('error：' + str + '!!!' + e);
+        return false;
+      }
+    }
+  },
+  isNumber: function isNumber(checkVal) {
+    var reg = /^-?[1-9][0-9]?.?[0-9]*$/;
+    return reg.test(checkVal);
+  } };
+
+/***/ }),
+
+/***/ 250:
+/*!************************************************************!*\
+  !*** F:/tradeMiniPro/my-app/components/uni-icons/icons.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12919,37 +12950,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 22:
-/*!***********************************************!*\
-  !*** D:/work/applet/my-app/common/checker.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-  error: '',
-  isJSON: function isJSON(str) {
-    if (typeof str == 'string') {
-      try {
-        var obj = JSON.parse(str);
-        if (typeof obj == 'object' && obj) {
-          return true;
-        } else {
-          return false;
-        }
-      } catch (e) {
-        console.log('error：' + str + '!!!' + e);
-        return false;
-      }
-    }
-  },
-  isNumber: function isNumber(checkVal) {
-    var reg = /^-?[1-9][0-9]?.?[0-9]*$/;
-    return reg.test(checkVal);
-  } };
-
-/***/ }),
-
 /***/ 3:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -12982,9 +12982,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!****************************************!*\
-  !*** D:/work/applet/my-app/pages.json ***!
-  \****************************************/
+/*!*****************************************!*\
+  !*** F:/tradeMiniPro/my-app/pages.json ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13891,21 +13891,21 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ }),
 
 /***/ 7:
-/*!*********************************************************!*\
-  !*** D:/work/applet/my-app/pages.json?{"type":"style"} ***!
-  \*********************************************************/
+/*!**********************************************************!*\
+  !*** F:/tradeMiniPro/my-app/pages.json?{"type":"style"} ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "商贸审批系统" }, "pages/index/approval": { "navigationBarTitleText": "审批" }, "pages/index/receiptPay": { "navigationBarTitleText": "往来" }, "pages/index/inventory": { "navigationBarTitleText": "库存" }, "pages/index/spDetail": { "navigationBarTitleText": "审批" }, "pages/index/wlDetail": { "navigationBarTitleText": "往来" }, "pages/index/kcDetail": { "navigationBarTitleText": "库存" }, "pages/report/index": { "navigationBarTitleText": "报表" }, "pages/report/inventory": { "navigationBarTitleText": "库存" }, "pages/report/cash": { "navigationBarTitleText": "现金池" }, "pages/report/payment": { "navigationBarTitleText": "付款申请" }, "pages/report/paydetail": { "navigationBarTitleText": "付款申请详情" }, "pages/report/collection": { "navigationBarTitleText": "收款通知" }, "pages/user/index": { "navigationBarTitleText": "个人中心" }, "pages/user/feedback": { "navigationBarTitleText": "问题反馈" }, "pages/user/about": { "navigationBarTitleText": "关于uCharts" }, "pages/user/service": { "navigationBarTitleText": "服务条款及协议" }, "pages/user/account": { "navigationBarTitleText": "帐号管理" }, "pages/user/message": { "navigationBarTitleText": "新消息通知" }, "pages/user/login": { "navigationBarTitleText": "登录" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "商贸审批系统", "navigationBarBackgroundColor": "#223766", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "商贸审批系统" }, "pages/index/approval": { "navigationBarTitleText": "审批" }, "pages/index/receiptPay": { "navigationBarTitleText": "往来" }, "pages/index/inventory": { "navigationBarTitleText": "库存" }, "pages/index/spDetail": { "navigationBarTitleText": "审批" }, "pages/index/wlDetail": { "navigationBarTitleText": "往来" }, "pages/index/kcDetail": { "navigationBarTitleText": "库存" }, "pages/report/index": { "navigationBarTitleText": "报表" }, "pages/report/inventorySummary": { "navigationBarTitleText": "库存汇总" }, "pages/report/dailyInventory": { "navigationBarTitleText": "每日库存明细" }, "pages/report/assetResume": { "navigationBarTitleText": "资产履历" }, "pages/report/cashPool": { "navigationBarTitleText": "现金池" }, "pages/report/billPool": { "navigationBarTitleText": "票据池" }, "pages/report/payment": { "navigationBarTitleText": "付款申请" }, "pages/report/paymentDetail": { "navigationBarTitleText": "付款申请详情" }, "pages/report/collection": { "navigationBarTitleText": "收款通知" }, "pages/info/index": { "navigationBarTitleText": "消息" }, "pages/info/infodetail": { "navigationBarTitleText": "详情" }, "pages/user/index": { "navigationBarTitleText": "个人中心" }, "pages/user/feedback": { "navigationBarTitleText": "问题反馈" }, "pages/user/about": { "navigationBarTitleText": "关于uCharts" }, "pages/user/service": { "navigationBarTitleText": "服务条款及协议" }, "pages/user/account": { "navigationBarTitleText": "帐号管理" }, "pages/user/message": { "navigationBarTitleText": "新消息通知" }, "pages/user/login": { "navigationBarTitleText": "登录" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "商贸审批系统", "navigationBarBackgroundColor": "#223766", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 
 /***/ 8:
-/*!********************************************************!*\
-  !*** D:/work/applet/my-app/pages.json?{"type":"stat"} ***!
-  \********************************************************/
+/*!*********************************************************!*\
+  !*** F:/tradeMiniPro/my-app/pages.json?{"type":"stat"} ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

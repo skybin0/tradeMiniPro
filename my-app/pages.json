@@ -50,15 +50,33 @@
                     }
         }
 		,{
-		    "path" : "pages/report/inventory",
+		    "path" : "pages/report/inventorySummary",
 		     "style": {
-		                "navigationBarTitleText": "库存"
+		                "navigationBarTitleText": "库存汇总"
 		            }
 		}
 		,{
-		    "path" : "pages/report/cash",
+		    "path" : "pages/report/dailyInventory",
+		     "style": {
+		                "navigationBarTitleText": "每日库存明细"
+		            }
+		}
+		,{
+		    "path" : "pages/report/assetResume",
+		     "style": {
+		                "navigationBarTitleText": "资产履历"
+		            }
+		}
+		,{
+		    "path" : "pages/report/cashPool",
 		     "style": {
 		                "navigationBarTitleText": "现金池"
+		            }
+		}
+		,{
+		    "path" : "pages/report/billPool",
+		     "style": {
+		                "navigationBarTitleText": "票据池"
 		            }
 		}
 		,{
@@ -68,7 +86,7 @@
 		            }
 		}
 		,{
-		    "path" : "pages/report/paydetail",
+		    "path" : "pages/report/paymentDetail",
 		     "style": {
 		                "navigationBarTitleText": "付款申请详情"
 		            }
@@ -77,6 +95,18 @@
 		    "path" : "pages/report/collection",
 		     "style": {
 		                "navigationBarTitleText": "收款通知"
+		            }
+		}
+		,{
+		    "path" : "pages/info/index",
+		     "style": {
+		                "navigationBarTitleText": "消息"
+		            }
+		}
+		,{
+		    "path" : "pages/info/infodetail",
+		     "style": {
+		                "navigationBarTitleText": "详情"
 		            }
 		}
 		,{

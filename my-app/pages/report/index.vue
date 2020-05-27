@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<view class="center-list">
-			<navigator url="inventory" hover-class="navigator-hover">
+			<navigator url="inventorySummary" hover-class="navigator-hover">
 				<view class="center-list-item">
 					<text class="list-icon">&#xe606;</text>
 					<text class="list-text">库存汇总</text>
@@ -10,46 +10,37 @@
 			</navigator>
 		</view>
 		<view class="center-list">
-			<navigator url="cash" hover-class="navigator-hover">
+			<navigator url="dailyInventory" hover-class="navigator-hover">
 				<view class="center-list-item">
-					<text class="list-icon">&#xe701;</text>
-					<text class="list-text">现金池</text>
+					<text class="list-icon">&#xe606;</text>
+					<text class="list-text">每日库存明细</text>
 					<text class="navigat-arrow">&#xe62b;</text>
 				</view>
 			</navigator>
 		</view>
 		<view class="center-list">
-			<navigator url="payment" hover-class="navigator-hover">
-				<view class="center-list-item">
-					<text class="list-icon">&#xe670;</text>
-					<text class="list-text">付款申请</text>
-					<text class="navigat-arrow">&#xe62b;</text>
-				</view>
-			</navigator>
-		</view>
-		<view class="center-list">
-			<navigator url="collection" hover-class="navigator-hover">
+			<navigator url="assetResume" hover-class="navigator-hover">
 				<view class="center-list-item border-bottom">
-					<text class="list-icon">&#xe6b7;</text>
-					<text class="list-text">收款通知</text>
-					<text class="navigat-arrow">&#xe62b;</text>
-				</view>
-			</navigator>
-		</view>
-		<view class="center-list">
-			<navigator url="inventory" hover-class="navigator-hover">
-				<view class="center-list-item">
 					<text class="list-icon">&#xe606;</text>
-					<text class="list-text">库存汇总</text>
+					<text class="list-text">资产履历</text>
 					<text class="navigat-arrow">&#xe62b;</text>
 				</view>
 			</navigator>
 		</view>
 		<view class="center-list">
-			<navigator url="cash" hover-class="navigator-hover">
+			<navigator url="cashPool" hover-class="navigator-hover">
 				<view class="center-list-item">
 					<text class="list-icon">&#xe701;</text>
 					<text class="list-text">现金池</text>
+					<text class="navigat-arrow">&#xe62b;</text>
+				</view>
+			</navigator>
+		</view>
+		<view class="center-list">
+			<navigator url="billPool" hover-class="navigator-hover">
+				<view class="center-list-item border-bottom">
+					<text class="list-icon">&#xe701;</text>
+					<text class="list-text">票据池</text>
 					<text class="navigat-arrow">&#xe62b;</text>
 				</view>
 			</navigator>

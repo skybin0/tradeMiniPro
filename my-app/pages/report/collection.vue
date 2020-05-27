@@ -8,6 +8,9 @@
 		    <text>pages/basic/column/column-scroll</text>
 		</view>
 		<!--#endif-->
+		<view class="qiun-bg-white qiun-title-bar qiun-common-mt" >
+			<view class="qiun-title-dot-light">库存汇总</view>
+		</view>
 		<view class="qiun-charts" >
 			<!--#ifdef MP-ALIPAY -->
 			<canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" :width="cWidth*pixelRatio" :height="cHeight*pixelRatio" :style="{'width':cWidth+'px','height':cHeight+'px'}" disable-scroll=true @touchstart="touchColumn" @touchmove="moveColumn" @touchend="touchEndColumn"></canvas>
