@@ -2,16 +2,16 @@
 	<view>
 <!-- 	{{id}} -->
 		<uni-list>
-			<uni-list-item :show-arrow="false" title="日期:2019-11-14" />
-			<uni-list-item :show-arrow="false" title="付款客商:上海鑫抚源国际贸易有限公司" />
-			<uni-list-item :show-arrow="false" title="收款客商:玛纳斯县通远商务服务有限公司" />
-			<uni-list-item :show-arrow="false" title="金额:39,273,100.00" />
-			<uni-list-item :show-arrow="false" title="付款类型:货款" />
-			<uni-list-item :show-arrow="false" title="合同类型:零买" />
-			<uni-list-item :show-arrow="false" title="部门:上海鑫抚源" />
-			<uni-list-item :show-arrow="false" title="单据申请人:系统管理员" />
-			<uni-list-item :show-arrow="false" title="单据状态:已作废" />
-			<uni-list-item :show-arrow="false" title="备注:啊啊啊啊啊啊啊啊啊啊" />
+			<uni-list-item :show-arrow="false" title="日期 : 2019-11-14" />
+			<uni-list-item :show-arrow="false" title="付款客商 : 上海鑫抚源国际贸易有限公司" />
+			<uni-list-item :show-arrow="false" title="收款客商 : 玛纳斯县通远商务服务有限公司" />
+			<uni-list-item :show-arrow="false" title="金额 : 39,273,100.00" />
+			<uni-list-item :show-arrow="false" title="付款类型 : 货款" />
+			<uni-list-item :show-arrow="false" title="合同类型 : 零买" />
+			<uni-list-item :show-arrow="false" title="部门 : 上海鑫抚源" />
+			<uni-list-item :show-arrow="false" title="单据申请人 : 系统管理员" />
+			<uni-list-item :show-arrow="false" title="单据状态 : 已作废" />
+			<uni-list-item :show-arrow="false" title="备注 : 啊啊啊啊啊啊啊啊啊啊" />
 			<!-- <list ref="list">
 				<cell>
 				  <text>啊啊啊啊啊啊啊啊啊啊</text>

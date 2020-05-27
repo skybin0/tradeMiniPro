@@ -1,0 +1,1 @@
+<view class="qiun-columns"><view class="qiun-bg-white qiun-title-bar qiun-common-mt"><view class="qiun-title-dot-light">每日库存明细</view></view><view class="qiun-charts-rotate"><canvas class="charts-rotate" canvas-id="canvasColumnStack" id="canvasColumnStack" data-event-opts="{{[['touchstart',[['touchColumn',['$event']]]]]}}" bindtouchstart="__e"></canvas></view></view>
