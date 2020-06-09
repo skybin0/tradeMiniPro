@@ -97,25 +97,40 @@
 				uni.login({
 					provider: 'weixin',
 					success: loginRes=> {	
-						console.log(loginRes,888)
+						// console.log(loginRes,999)
 						
-						// let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=wx4884906061740ce4&secret=49edd121300261a03578613d0e843e26&js_code='+loginRes.code+'&grant_type=authorization_code'
-						let url = 'http://192.168.3.166:9528/Trade/system_login'
+						let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=wx4884906061740ce4&secret=49edd121300261a03578613d0e843e26&js_code='+loginRes.code+'&grant_type=authorization_code'
+						// let url = 'http://192.168.3.166:8080/Trade/system_login'
+						// uni.request({
+						// 	url: url,
+						// 	method: 'GET',
+						// 	// data: {
+						// 	// 	loginType:"mini",jsCode:loginRes.code},
+						// 	success: res => {
+						// 		console.log("ss",res)
+						// 		// console.log("1111",res)
+						// 		// console.log("2222",res)
+						// 		// console.log("33333",res)
+						// 		// console.log("4444",res)
+						// 	},
+						// 	fail: () => {},
+						// 	complete: () => {}
+						// });
 						uni.request({
-							url: url,
-							method: 'POST',
+							url: 'http://192.168.3.166:8080/Trade/system_login',
+							method: 'GET',
 							data: {
-								logintype:"mini",code:loginRes.code},
+								loginType:"mini",openId:'oIHfT5AfXK8VyKWwwLjAmWe7jG8A'},
 							success: res => {
-								// console.log("ss",res)
-								console.log("1111",res)
-								console.log("2222",res)
-								console.log("33333",res)
-								console.log("4444",res)
+								console.log("ss",res.header['Set-Cookie'])
+								if (res.header['Set-Cookie'] != null) {
+								  uni.setStorageSync("sessionid", res.header["Set-Cookie"]);
+								}
 							},
 							fail: () => {},
 							complete: () => {}
 						});
+						
 						
 					}
 				});

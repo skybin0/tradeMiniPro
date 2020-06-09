@@ -22,47 +22,7 @@
 			<wuc-tab :tab-list="tabList" :tabCur.sync="TabCur" @change="tabChange"></wuc-tab>
 			
 			<uni-list>
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" :data-id="1"/>
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />				
+				<uni-list-item v-for="item in list" @tap="openDetail" :title="item.shortCompName+'>'+item.shortTargetCustomer" :rightText="item.amount" :data-id="1"/>
 			</uni-list>
 	</view>
 </template>
@@ -80,31 +40,40 @@
 				tabList: [{ name: '待审批' }, { name: '已同意' }, { name: '已驳回' }],
 			}
 		},
-		onLoad() {
-		 uni.request({
-		 	url: 'https://unidemo.dcloud.net.cn/api/news',
-		 	method: 'GET',
-		 	data: {},
-		 	success: res => {
-				console.log(res)
-				this.list = res.data
-			},
-		 	fail: () => {},
-		 	complete: () => {}
-		 });
+		onLoad() {			
+		 this.taskListMini('auditer')		 
 		},
 		methods: {
 			openDetail(e){
-				// console.log(e)
-				// let id = e.currentTarget.dataset.id
 				uni.navigateTo({
-					// url: '../detail/detail?id='+id
 					url: './spDetail'
+				});
+			},
+			taskListMini(type){
+				uni.request({
+					url: 'http://192.168.3.166:8080/Trade/act/actMyTask/taskListMini',
+					method: 'GET',
+							header:{Cookie:uni.getStorageSync("sessionid")},
+					data: {actKey:type},
+					success: res => {
+								this.list = res.data.obj.actInfos
+							},
+					fail: () => {},
+					complete: () => {}
 				});
 			},
 			tabChange(index) {
 				this.TabCur = index;
 				console.log(this.TabCur,'sss')
+				if(index === 0){
+					this.taskListMini('auditer')
+				}
+				if(index === 1){
+					this.taskListMini('ta_modifyBill')
+				}
+				if(index === 2){
+					this.taskListMini('listCheckByPage')
+				}
 			}
 		}
 	}
