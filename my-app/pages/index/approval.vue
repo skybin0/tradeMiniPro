@@ -22,7 +22,7 @@
 			<wuc-tab :tab-list="tabList" :tabCur.sync="TabCur" @change="tabChange"></wuc-tab>
 			
 			<uni-list>
-				<uni-list-item v-for="item in list" @tap="openDetail" :title="item.shortCompName+'>'+item.shortTargetCustomer" :rightText="item.amount" :data-id="1"/>
+				<uni-list-item v-for="item in list" @tap="openDetail(item)" :title="item.shortCompName+'>'+item.shortTargetCustomer" :rightText="item.amount" :data-id="1"/>
 			</uni-list>
 	</view>
 </template>
@@ -44,19 +44,24 @@
 		 this.taskListMini('auditer')		 
 		},
 		methods: {
-			openDetail(e){
+			openDetail(item){
 				uni.navigateTo({
-					url: './spDetail'
+					url: './spDetail?TabCur='+this.TabCur+'&billCode='+item.billCode+'&id='+item.id
 				});
 			},
 			taskListMini(type){
 				uni.request({
-					url: 'http://192.168.3.166:8080/Trade/act/actMyTask/taskListMini',
+					url: 'http://192.168.3.166:8080/Trade/act/mini/taskListMini',
 					method: 'GET',
-							header:{Cookie:uni.getStorageSync("sessionid")},
+					header:{Cookie:uni.getStorageSync("sessionid")},
 					data: {actKey:type},
 					success: res => {
-								this.list = res.data.obj.actInfos
+								this.list = []
+								if(res.data.obj ){
+									this.list = res.data.obj.actInfos
+								}
+								
+								
 							},
 					fail: () => {},
 					complete: () => {}

@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<view class="homebox">
 			<view class="home home-header">
 				<navigator url="approval" hover-class="navigator-hover">
 					<view class="btn-box">
@@ -23,7 +24,9 @@
 					</view>	
 				</navigator>
 			</view>
-			<view class="example-body">
+		</view>
+			
+			<view class="example-body hyview">
 				<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" text="欢迎使用商贸小程序端!" />
 			</view>
 			<view class="home">
@@ -285,12 +288,22 @@
 		width: 710upx;
 		height: 500upx;
 		background-color: #FFFFFF;
+		z-index: 1;
 	}
 	
 	.charts {
 		width: 710upx;
 		height: 500upx;
 		background-color: #FFFFFF;
+	}
+	.homebox{
+		z-index: 999999;
+		position: fixed;
+		height: 300upx;
+		width: 100%;
+		top: 0px;
+		margin-bottom:300upx;
+		box-sizing: border-box;
 	}
 	.home{
 		background-color: #ffffff;
@@ -347,6 +360,9 @@
 		background-size:50% 50%;
 		background-position:50% 50%;
 		background-origin:content-box;
+	}
+	.hyview{
+		margin-top: 340upx;
 	}
 	
 </style>
