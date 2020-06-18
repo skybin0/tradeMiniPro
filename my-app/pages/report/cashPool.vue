@@ -1,206 +1,73 @@
 <template>
-	<view class="content">
-		<view class="text">
-			总户数: <text class="code">4436</text>
-			金额合计: <text class="code">2,748,089,218.92</text> 
-		</view>
-		<view class="genaral-area">
-			<view class="flex-box tc thead">
-				<view class="item-2">开户公司</view>
-				<view class="item-2">开户银行</view>
-				<view class="item-2">银行账号</view>
-				<view class="item-2">账户类别</view>
-				<view class="item-2">银行存款</view>
-			</view>
-			<view class="flex-box tc table">
-				<view class="item-2">
-					辽宁颐和实业有限公司
-				</view>
-				<view class="item-2">
-					辽阳农村商业银行股份有限公司宏伟支行
-				</view>
-				<view class="item-2">
-					4903 1201 0139 439 389
-				</view>
-				<view class="item-2">
-					A
-				</view>
-				<view class="item-2">
-					40,972.00
-				</view>
-			</view>
-			<view class="flex-box table tc">
-				<view class="item-2">
-					辽宁颐和实业有限公司
-				</view>
-				<view class="item-2">
-					辽阳农村商业银行股份有限公司宏伟支行
-				</view>
-				<view class="item-2">
-					4903 1201 0139 439 389
-				</view>
-				<view class="item-2">
-					A
-				</view>
-				<view class="item-2">
-					40,972.00
-				</view>
-			</view>
-			<view class="flex-box table tc">
-				<view class="item-2">
-					辽宁颐和实业有限公司
-				</view>
-				<view class="item-2">
-					辽阳农村商业银行股份有限公司宏伟支行
-				</view>
-				<view class="item-2">
-					4903 1201 0139 439 389
-				</view>
-				<view class="item-2">
-					A
-				</view>
-				<view class="item-2">
-					40,972.00
-				</view>
-			</view>
-			<view class="flex-box table tc">
-				<view class="item-2">
-					辽宁颐和实业有限公司
-				</view>
-				<view class="item-2">
-					辽阳农村商业银行股份有限公司宏伟支行
-				</view>
-				<view class="item-2">
-					4903 1201 0139 439 389
-				</view>
-				<view class="item-2">
-					A
-				</view>
-				<view class="item-2">
-					40,972.00
-				</view>
-			</view>
-			<view class="flex-box table tc">
-				<view class="item-2">
-					辽宁颐和实业有限公司
-				</view>
-				<view class="item-2">
-					辽阳农村商业银行股份有限公司宏伟支行
-				</view>
-				<view class="item-2">
-					4903 1201 0139 439 389
-				</view>
-				<view class="item-2">
-					A
-				</view>
-				<view class="item-2">
-					40,972.00
-				</view>
-			</view>
-			<view class="flex-box table tc">
-				<view class="item-2">
-					辽宁颐和实业有限公司
-				</view>
-				<view class="item-2">
-					辽阳农村商业银行股份有限公司宏伟支行
-				</view>
-				<view class="item-2">
-					4903 1201 0139 439 389
-				</view>
-				<view class="item-2">
-					A
-				</view>
-				<view class="item-2">
-					40,972.00
-				</view>
-			</view>
-			<view class="flex-box table tc">
-				<view class="item-2">
-					辽宁颐和实业有限公司
-				</view>
-				<view class="item-2">
-					辽阳农村商业银行股份有限公司宏伟支行
-				</view>
-				<view class="item-2">
-					4903 1201 0139 439 389
-				</view>
-				<view class="item-2">
-					A
-				</view>
-				<view class="item-2">
-					40,972.00
-				</view>
-			</view>
-		</view>
-	</view>
+  <view class="content">
+    <uni-list>
+      <uni-list-item
+        v-for="item in list"
+        :title="'账号 : '+item.bankAccount"
+        :note="'开户行 : '+item.bankFullName+'\\n所属行 : '+item.bankFullName+'\\n开户公司 : '+item.customerName+'\\n账户类别 : '+$options.filters.formatStyle(item.accountStyle)+'\\n银行存款 : '+$options.filters.formatAmount(item.accountBalance)"
+        :data-id="1"
+      />
+    </uni-list>
+  </view>
 </template>
-
 <script>
-	export default {
-		data() {
-			return {
-				
-			};
-		}
-	}
+var _self
+var canvaLineA = null
+var lastMoveTime = null //最后执行移动的时间戳
+export default {
+  data() {
+    return {
+      list: [],
+      TabCur: 0
+    }
+  },
+  onLoad() {
+    this.listByPage()
+  },
+
+  methods: {
+    listByPage() {
+      uni.request({
+        url: 'http://192.168.2.203:8000/Bankroll/baseinfo/getBanksxh',
+        method: 'get',
+        header: {
+          Cookie: uni.getStorageSync('sessionid')
+        },
+        data: {
+          pageSize: 30,
+          currentPage: 1
+        },
+        success: res => {
+          this.list = []
+          if (res.data.items) {
+            this.list = res.data.items
+          }
+        },
+        fail: () => {},
+        complete: () => {}
+      })
+    },
+    tabChange(index) {
+      this.TabCur = index
+      console.log(this.TabCur, 'this.TabCur')
+    }
+  }
+}
 </script>
 
-<style lang="scss">
-	$color:#e0e0e0;
-	.text{
-		padding: 10upx;
-	}
-	.code{
-		margin: 20upx 0;
-		color: red;
-	}
-	.content {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		background-color: #fbf9fe;
-	}
-	.flex-box {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	.flex-box>.item-2 {
-		flex: 0 0 20%;
-	}
-	.genaral-area {
-		.item-2 {
-			font-size: 26upx;
-			border: 1upx solid $color;
-			border-width: 1upx 1upx 0 0;
-			padding: 16upx 0;
-			box-sizing: border-box;
-			text-align: center;
-	
-			&:first-child {
-				border-left-width: 1upx;
-			}
-	
-			&:last-child {
-				border-right-width: 1upx;
-			}
-		}
-		.thead {
-			.item-2 {
-				font-weight: bold;
-				box-sizing: border-box;
-				background-color: #F8F8F8;
-			}
-		}
-		.table {
-			&:last-child {
-				border-bottom: 1upx solid $color;
-			}
-			.item-2 {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				box-sizing: border-box;
-			}
-		}
-	}
+<style>
+.uni-media-list-body {
+  height: auto;
+}
+.uni-media-list-text-top {
+  line-height: 1.6em;
+}
+._div {
+  display: flex;
+  justify-content: space-between;
+}
+.wuc-tab-item {
+  width: 30%;
+  text-align: center;
+}
 </style>

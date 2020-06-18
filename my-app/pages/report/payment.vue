@@ -1,111 +1,93 @@
 <template>
-	<view class="content">
-			<uni-list>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00" :data-id="1"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-				<uni-list-item @tap="openDetail" title="上海鑫抚源 → 江铜国际贸易" note='2020-03-13' rightText="39,273,100.00"/>
-			</uni-list>
-	</view>
+  <view class="content">
+    <uni-list>
+      <uni-list-item
+        v-for="item in list"
+        @tap="openDetail(item)"
+        :title="item.buyerName+' ⇨ '+item.saleName"
+        :note="$options.filters.formatDate(item.billDate)"
+        :rightText="$options.filters.formatAmount(item.paymentAmounts)"
+        :data-id="1"
+      />
+    </uni-list>
+    <!-- <uni-pagination title="标题文字" show-icon="true" total="50" current="2"></uni-pagination> -->
+  </view>
 </template>
 <script>
-	// import WucTab from '@/components/wuc-tab/wuc-tab.vue';
-	var _self;
-	var canvaLineA=null;
-	var lastMoveTime=null;//最后执行移动的时间戳
-	export default {
-		// components: { WucTab },
-		data() {
-			return {
-				list:[],
-				TabCur: 0,
-				tabList: [{ name: '待审批' }, { name: '已同意' }, { name: '已驳回' }],
-			}
-		},
-		onLoad() {
-		 uni.request({
-		 	url: 'https://unidemo.dcloud.net.cn/api/news',
-		 	method: 'GET',
-		 	data: {},
-		 	success: res => {
-				console.log(res)
-				this.list = res.data
-			},
-		 	fail: () => {},
-		 	complete: () => {}
-		 });
-		},
-		methods: {
-			openDetail(e){
-				// console.log(e)
-				// let id = e.currentTarget.dataset.id
-				uni.navigateTo({
-					// url: '../detail/detail?id='+id
-					url: './paymentDetail'
-				});
-			},
-			tabChange(index) {
-				this.TabCur = index;
-				console.log(this.TabCur,'sss')
-			}
-		}
-	}
+import uniPagination from '@/components/uni-pagination/uni-pagination.vue'
+var _self
+var canvaLineA = null
+var lastMoveTime = null //最后执行移动的时间戳
+export default {
+  components: { uniPagination },
+  data() {
+    return {
+      list: [],
+      TabCur: 0
+    }
+  },
+  onLoad() {
+    this.listByPage()
+  },
+  methods: {
+    listByPage() {
+      uni.request({
+        url:
+          'http://192.168.3.166:8080/Trade/co/coReport/paymentNotice/listByPage',
+        method: 'post',
+        header: { Cookie: uni.getStorageSync('sessionid') },
+        data: {
+          pageSize: 30,
+          pageNum: 1,
+          currentCustomerPkid: 'YZ00001',
+          otherCustomerPkid: '',
+          dateFrom: '2020-06-01',
+          dateTo: '2020-06-16',
+          flagFinished: '',
+          payReceiptType: '',
+          departPkid: '',
+          empPkid: ''
+        },
+        success: res => {
+          this.list = []
+          if (res.data.obj) {
+            this.list = res.data.obj.list.results
+          }
+        },
+        fail: () => {},
+        complete: () => {}
+      })
+    },
+    openDetail(item) {
+      uni.navigateTo({
+        url:
+          './paymentDetail?TabCur=' +
+          this.TabCur +
+          '&item=' +
+          encodeURIComponent(JSON.stringify(item))
+      })
+    },
+    tabChange(index) {
+      this.TabCur = index
+      console.log(this.TabCur, 'this.TabCur')
+    }
+  }
+}
 </script>
 
 <style>
-	.uni-media-list-body{
-		height: auto;
-	}
-	.uni-media-list-text-top{
-		line-height: 1.6em;
-	}
-	._div{
-		display: flex;
-		justify-content: space-between;
-	}
-	.wuc-tab-item{
-		width: 30%;
-		text-align: center;
-	}
-	
+.uni-media-list-body {
+  height: auto;
+}
+.uni-media-list-text-top {
+  line-height: 1.6em;
+}
+._div {
+  display: flex;
+  justify-content: space-between;
+}
+.wuc-tab-item {
+  width: 30%;
+  text-align: center;
+}
 </style>

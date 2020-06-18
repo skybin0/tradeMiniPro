@@ -339,7 +339,7 @@
 		
 	.home-header .btn1{
 		background:url(../../static/title-sp.png);
-		background-color: #CCCCFF;
+		background-color: pink;
 		background-repeat:no-repeat;
 		background-size:50% 50%;
 		background-position:50% 50%;
