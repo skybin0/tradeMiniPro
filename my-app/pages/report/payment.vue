@@ -9,7 +9,7 @@
         :hover-stay-time="70"
         @click="showDrawer('showLeft')"
       >
-        <text class="word-btn-white">查询</text>
+        <text class="word-btn-white">添加查询条件</text>
       </view>
       <uni-drawer ref="showLeft" mode="left" :width="320" @change="change($event,'showLeft')">
         <form @submit="formSubmit">
@@ -74,7 +74,7 @@
             :hover-stay-time="70"
             @click="closeDrawer('showLeft')"
           >
-            <text class="word-btn-white">搜索</text>
+            <text class="word-btn-white">查询</text>
           </view>
         </view>
       </uni-drawer>
@@ -355,7 +355,7 @@ view {
 
 .word-btn-white {
   font-size: 18px;
-  color: #ffffff;
+  color: #263b63;
 }
 
 .word-btn {
@@ -368,11 +368,11 @@ view {
   border-radius: 6px;
   height: 48px;
   margin: 15px;
-  background-color: #263b63;
+  background-color: #f3f3f3;
 }
 
 .word-btn--hover {
-  background-color: #263b63;
+  background-color: #f3f3f3;
 }
 
 .header {
