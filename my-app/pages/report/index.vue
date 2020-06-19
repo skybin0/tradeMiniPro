@@ -77,19 +77,7 @@ export default {
       tabList: [{ name: '待审批' }, { name: '已同意' }, { name: '已驳回' }]
     }
   },
-  onLoad() {
-    uni.request({
-      url: 'https://unidemo.dcloud.net.cn/api/news',
-      method: 'GET',
-      data: {},
-      success: res => {
-        console.log(res)
-        this.list = res.data
-      },
-      fail: () => {},
-      complete: () => {}
-    })
-  },
+  onLoad() {},
   methods: {
     gourl(url) {
       uni.navigateTo({
