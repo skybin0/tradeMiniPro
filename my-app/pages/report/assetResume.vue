@@ -1,268 +1,199 @@
 <template>
-	<view class="content">
-		<!-- <view class="text">
-			总户数: <text class="code">4436</text>
-			金额合计: <text class="code">2,748,089,218.92</text> 
-		</view> -->
-		<view class="genaral-area">
-			<view class="flex-box tc thead">
-				<view class="item-1">箱号</view>
-				<view class="item-2">吨位</view>
-				<view class="item-2">货品</view>
-				<view class="item-2">规格</view>
-				<view class="item-2">型号</view>
-				<view class="item-2">品牌</view>
-			</view>
-			<view class="flex-box tc table">
-				<view class="item-1" @tap="openDetail">
-					al3180009170
-				</view>
-				<view class="item-2">
-					25.4370
-				</view>
-				<view class="item-2">
-					铝锭
-				</view>
-				<view class="item-2">
-					A00
-				</view>
-				<view class="item-2">
-					99.70
-				</view>
-				<view class="item-2">
-					黄河鑫业
-				</view>
-			</view>
-			<view class="flex-box tc table">
-				<view class="item-1" @tap="openDetail">
-					al3180009170
-				</view>
-				<view class="item-2">
-					25.4370
-				</view>
-				<view class="item-2">
-					铝锭
-				</view>
-				<view class="item-2">
-					A00
-				</view>
-				<view class="item-2">
-					99.70
-				</view>
-				<view class="item-2">
-					黄河鑫业
-				</view>
-			</view>
-			<view class="flex-box tc table">
-				<view class="item-1" @tap="openDetail">
-					al3180009170
-				</view>
-				<view class="item-2">
-					25.4370
-				</view>
-				<view class="item-2">
-					铝锭
-				</view>
-				<view class="item-2">
-					A00
-				</view>
-				<view class="item-2">
-					99.70
-				</view>
-				<view class="item-2">
-					黄河鑫业
-				</view>
-			</view>
-			<view class="flex-box tc table">
-				<view class="item-1" @tap="openDetail">
-					al3180009170
-				</view>
-				<view class="item-2">
-					25.4370
-				</view>
-				<view class="item-2">
-					铝锭
-				</view>
-				<view class="item-2">
-					A00
-				</view>
-				<view class="item-2">
-					99.70
-				</view>
-				<view class="item-2">
-					黄河鑫业
-				</view>
-			</view>
-			<view class="flex-box tc table">
-				<view class="item-1" @tap="openDetail">
-					al3180009170
-				</view>
-				<view class="item-2">
-					25.4370
-				</view>
-				<view class="item-2">
-					铝锭
-				</view>
-				<view class="item-2">
-					A00
-				</view>
-				<view class="item-2">
-					99.70
-				</view>
-				<view class="item-2">
-					黄河鑫业
-				</view>
-			</view>
-			<view class="flex-box tc table">
-				<view class="item-1" @tap="openDetail">
-					al3180009170
-				</view>
-				<view class="item-2">
-					25.4370
-				</view>
-				<view class="item-2">
-					铝锭
-				</view>
-				<view class="item-2">
-					A00
-				</view>
-				<view class="item-2">
-					99.70
-				</view>
-				<view class="item-2">
-					黄河鑫业
-				</view>
-			</view>
-			<view class="flex-box tc table">
-				<view class="item-1" @tap="openDetail">
-					al3180009170
-				</view>
-				<view class="item-2">
-					25.4370
-				</view>
-				<view class="item-2">
-					铝锭
-				</view>
-				<view class="item-2">
-					A00
-				</view>
-				<view class="item-2">
-					99.70
-				</view>
-				<view class="item-2">
-					黄河鑫业
-				</view>
-			</view>
-		</view>
-	</view>
+  <view class="content">
+    <!-- 查询 -->
+    <form @submit="formSubmit">
+      <view class="uni-form-item uni-column">
+        <view class="uni-list">
+          <view class="uni-list-cell">
+            <view class="uni-list-cell-left">当前公司</view>
+            <view class="uni-list-cell-db">
+              <input class="uni-input" v-model="query.customerPkid" placeholder="当前公司" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="uni-form-item uni-column">
+        <view class="uni-list">
+          <view class="uni-list-cell">
+            <view class="uni-list-cell-left">年份</view>
+            <view class="uni-list-cell-db">
+              <picker
+                mode="date"
+                :value="date"
+                :start="startDate"
+                :end="endDate"
+                @change="dateFromChange"
+              >
+                <view class="uni-input">{{query.yearStr}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="uni-form-item uni-column">
+        <view class="uni-list">
+          <view class="uni-list-cell">
+            <view class="uni-list-cell-left">月份</view>
+            <view class="uni-list-cell-db">
+              <picker
+                mode="date"
+                :value="date"
+                :start="startDate"
+                :end="endDate"
+                @change="dateToChange"
+              >
+                <view class="uni-input">{{query.monthStr}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="uni-btn-v">
+        <button form-type="submit">查询</button>
+      </view>
+    </form>
+    <!-- 列表 -->
+    <uni-list>
+      <uni-list-item
+        v-for="item in list"
+        @tap="openDetail(item)"
+        :title="'箱号 : '+item.containerNum"
+        :rightText="'货品 : '+item.cargoName"
+        :data-id="1"
+      />
+    </uni-list>
+    <!-- 上拉加载 -->
+    <uni-load-more :status="status" :icon-size="16" :content-text="contentText" />
+  </view>
 </template>
-
 <script>
-	export default {
-		data() {
-			return {
-				
-			};
-		},
-		methods: {
-			openDetail(e){
-				// console.log(e)
-				// let id = e.currentTarget.dataset.id
-				uni.navigateTo({
-					// url: '../detail/detail?id='+id
-					url: './paymentDetail'
-				});
-			},
-		}
-	}
+function getDate(type) {
+  const date = new Date()
+  let year = date.getFullYear()
+  let month = date.getMonth() + 1
+  let day = date.getDate()
+  if (type === 'start') {
+    year = year - 60
+  } else if (type === 'end') {
+    year = year + 2
+  }
+  month = month > 9 ? month : '0' + month
+  day = day > 9 ? day : '0' + day
+  return `${year}-${month}-${day}`
+}
+var _self
+var canvaLineA = null
+var lastMoveTime = null //最后执行移动的时间戳
+import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue'
+export default {
+  components: {
+    uniLoadMore
+  },
+  data() {
+    return {
+      TabCur: 0,
+      list: [],
+      last_id: '',
+      reload: false,
+      status: 'more',
+      contentText: {
+        contentdown: '上拉加载更多',
+        contentrefresh: '加载中',
+        contentnomore: '没有更多'
+      },
+      query: {
+        pageNum: 1,
+        pageSize: 30,
+        customerPkid: 'YZ00001',
+        yearStr: '2020',
+        monthStr: '06'
+      },
+      startDate: getDate('start'),
+      endDate: getDate('end')
+    }
+  },
+  onLoad() {
+    this.getList()
+  },
+  onPullDownRefresh() {
+    this.reload = true
+    this.last_id = ''
+    this.getList()
+  },
+  onReachBottom() {
+    this.status = 'more'
+    this.getList()
+  },
+  methods: {
+    // 表单
+    dateFromChange(e) {
+      this.query.yearStr = e.target.value
+    },
+    dateToChange(e) {
+      this.query.monthStr = e.target.value
+    },
+    formSubmit(e) {
+      console.log(e.detail.value)
+      this.query.pageNum = 1
+      this.last_id = ''
+      this.getList()
+    },
+    // 列表
+    getList() {
+      if (this.last_id) {
+        //说明已有数据，目前处于上拉加载
+        this.status = 'loading'
+        this.query.pageNum = this.last_id + 1
+      }
+      uni.request({
+        url: 'http://192.168.3.166:8080/Trade/run/asset/history/selectByPageC',
+        method: 'post',
+        header: {
+          Cookie: uni.getStorageSync('sessionid'),
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: this.query,
+        success: res => {
+          if (res.data.obj) {
+            let data = res.data.obj.pages.results
+            this.list = this.reload ? data : this.list.concat(data)
+            this.last_id = this.query.pageNum
+            this.reload = false
+          }
+        },
+        fail: () => {},
+        complete: () => {}
+      })
+    },
+    openDetail(item) {
+      uni.navigateTo({
+        url:
+          './assetResumeDetail?TabCur=' +
+          this.TabCur +
+          '&inventoryPkid=' +
+          item.inventoryPkid
+      })
+    },
+    tabChange(index) {
+      this.TabCur = index
+    }
+  }
+}
 </script>
 
-<style lang="scss">
-	$color:#e0e0e0;
-	.text{
-		padding: 10upx;
-	}
-	.code{
-		margin: 20upx 0;
-		color: red;
-	}
-	.content {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		background-color: #fbf9fe;
-	}
-	.flex-box {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	.flex-box>.item-1 {
-		flex: 0 0 30%;
-	}
-	.flex-box>.item-2 {
-		flex: 0 0 14%;
-	}
-	.genaral-area {
-		.item-1 {
-			font-size: 26upx;
-			border: 1upx solid $color;
-			border-width: 1upx 1upx 0 0;
-			padding: 16upx 0;
-			box-sizing: border-box;
-			text-align: center;
-			
-			&:first-child {
-				border-left-width: 1upx;
-			}
-			
-			&:last-child {
-				border-right-width: 1upx;
-			}
-		}
-		.item-2 {
-			font-size: 26upx;
-			border: 1upx solid $color;
-			border-width: 1upx 1upx 0 0;
-			padding: 16upx 0;
-			box-sizing: border-box;
-			text-align: center;
-	
-			&:first-child {
-				border-left-width: 1upx;
-			}
-	
-			&:last-child {
-				border-right-width: 1upx;
-			}
-		}
-		.thead {
-			.item-1 {
-				font-weight: bold;
-				box-sizing: border-box;
-				background-color: #F8F8F8;
-			}
-			.item-2 {
-				font-weight: bold;
-				box-sizing: border-box;
-				background-color: #F8F8F8;
-			}
-		}
-		.table {
-			&:last-child {
-				border-bottom: 1upx solid $color;
-			}
-			.item-1 {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				box-sizing: border-box;
-			}
-			.item-2 {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				box-sizing: border-box;
-			}
-		}
-	}
+<style>
+.uni-media-list-body {
+  height: auto;
+}
+.uni-media-list-text-top {
+  line-height: 1.6em;
+}
+._div {
+  display: flex;
+  justify-content: space-between;
+}
+.wuc-tab-item {
+  width: 30%;
+  text-align: center;
+}
 </style>

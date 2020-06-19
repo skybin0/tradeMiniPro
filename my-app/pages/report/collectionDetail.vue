@@ -7,8 +7,8 @@
         title="日期 : "
         :rightText="$options.filters.formatDate(data.billDate)"
       />
-      <uni-list-item :show-arrow="false" title="付款客商 : " :rightText="data.buyerName" />
       <uni-list-item :show-arrow="false" title="收款客商 : " :rightText="data.saleName" />
+      <uni-list-item :show-arrow="false" title="付款客商 : " :rightText="data.buyerName" />
       <uni-list-item
         :show-arrow="false"
         title="金额 : "
@@ -38,6 +38,7 @@ export default {
   onLoad(option) {
     this.data = JSON.parse(decodeURIComponent(option.item))
   },
+
   methods: {}
 }
 </script>
