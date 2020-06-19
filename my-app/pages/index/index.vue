@@ -1,6 +1,5 @@
 <template>
 	<view class="content">
-		<view class="homebox">
 			<view class="home home-header">
 				<navigator url="approval" hover-class="navigator-hover">
 					<view class="btn-box">
@@ -24,9 +23,7 @@
 					</view>	
 				</navigator>
 			</view>
-		</view>
-			
-			<view class="example-body hyview">
+			<view class="example-body">
 				<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" text="欢迎使用商贸小程序端!" />
 			</view>
 			<view class="home">
@@ -42,7 +39,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="home">
+			<!-- <view class="home">
 				<view class="qiun-columns">
 					<view class="qiun-bg-white qiun-title-bar qiun-common-mt" >
 						<view class="qiun-title-dot-light">环形图</view>
@@ -51,13 +48,14 @@
 						<canvas canvas-id="canvasRing" id="canvasRing" class="charts" @touchstart="touchRing2"></canvas>
 					</view>
 				</view>
-			</view>
+			</view> -->
 	</view>
 </template>
 
 <script>
 	import uCharts from '@/components/u-charts/u-charts.js';
 	import  { isJSON } from '@/common/checker.js';
+	import moment from 'moment'
 	var _self;
 	var canvaLineA=null;
 	var lastMoveTime=null;//最后执行移动的时间戳
@@ -88,21 +86,39 @@
 		},
 		methods: {
 			getServerData(){
+				moment().format("YYYY-MM-DD HH:mm:ss"); //当前时间
+				let fr = moment().subtract(6, "days").format('YYYY-MM-DD')
+				let to = moment().format('YYYY-MM-DD')
 				uni.request({
-					url: 'https://www.ucharts.cn/data.json',
-					data:{
-					},
+					// url: 'https://www.ucharts.cn/data.json',
+					url: 'http://192.168.3.166:8080/Trade/co/coCrawler/select',
+					method: 'POST',
+					header:{'content-type':'multipart/form-data; boundary=XXX', 'Cookie':uni.getStorageSync("sessionid")},
+					data:'\r\n--XXX' +
+							'\r\nContent-Disposition: form-data; name="item"' +
+							'\r\n' +
+							'\r\n4' +
+							'\r\n--XXX' +
+							'\r\nContent-Disposition: form-data; name="from"' +
+							'\r\n' +
+							'\r\n'+fr+ 
+							'\r\n--XXX' +
+							'\r\nContent-Disposition: form-data; name="to"' +
+							'\r\n' +
+							'\r\n'+to+ 
+							'\r\n--XXX--',
 					success: function(res) {
-						// console.log(res.data.data)
 						let LineA={categories:[],series:[]};
 						//这里我后台返回的是数组，所以用等于，如果您后台返回的是单条数据，需要push进去
-						LineA.categories=res.data.data.LineA.categories;
-						LineA.series=res.data.data.LineA.series;
+						LineA.categories=res.data.obj.time;
+						LineA.series.push({name:'最高价',data:res.data.obj.max})
+						LineA.series.push({name:'平均价',data:res.data.obj.mid})
+						LineA.series.push({name:'最低价',data:res.data.obj.min})
 						
 						//第二根线为虚线的设置
-						LineA.series[1].lineType='dash';
-						LineA.series[1].dashLength=10;
-						_self.textarea = JSON.stringify(res.data.data.LineA);
+						// LineA.series[1].lineType='dash';
+						// LineA.series[1].dashLength=10;
+						// _self.textarea = JSON.stringify(res.data.data.LineA);
 						_self.showLineA("canvasLineA",LineA);
 					},
 					fail: () => {
@@ -288,22 +304,12 @@
 		width: 710upx;
 		height: 500upx;
 		background-color: #FFFFFF;
-		z-index: 1;
 	}
 	
 	.charts {
 		width: 710upx;
 		height: 500upx;
 		background-color: #FFFFFF;
-	}
-	.homebox{
-		z-index: 999999;
-		position: fixed;
-		height: 300upx;
-		width: 100%;
-		top: 0px;
-		margin-bottom:300upx;
-		box-sizing: border-box;
 	}
 	.home{
 		background-color: #ffffff;
@@ -360,9 +366,6 @@
 		background-size:50% 50%;
 		background-position:50% 50%;
 		background-origin:content-box;
-	}
-	.hyview{
-		margin-top: 340upx;
 	}
 	
 </style>
