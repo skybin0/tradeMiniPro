@@ -1,59 +1,23 @@
 <template>
-	<view class="content">			
-			<uni-list>
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" :data-id="1"/>
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />
-				<uni-list-item @tap="openDetail" title="海鑫抚源>上海欧冶" rightText="1,193.2190" />				
-			</uni-list>
+	<view class="content">		
+			<wuc-tab :tab-list="tabList" :tabCur.sync="TabCur" @change="tabChange"></wuc-tab>
+			<payment v-if="TabCur === 0"></payment>
+			<collection v-if="TabCur === 1"></collection>
 	</view>
 </template>
 <script>
 	// import WucTab from '@/components/wuc-tab/wuc-tab.vue';
+	import Payment from '../report/payment.vue'
+	import Collection from '../report/collection.vue'
+	
 	var _self;
 	var canvaLineA=null;
 	var lastMoveTime=null;//最后执行移动的时间戳
 	export default {
-		// components: { WucTab },
+		components: { Payment ,Collection},
 		data() {
 			return {
+				tabList: [{ name: '付款申请' }, { name: '收款通知' }],
 				list:[],
 				TabCur: 0,
 			}
@@ -72,8 +36,12 @@
 		 // });
 		},
 		methods: {
+			tabChange(index) {
+				console.log(this.TabCur,22)
+				this.TabCur = index;
+				
+			},
 			openDetail(e){
-				// console.log(e)
 				// let id = e.currentTarget.dataset.id
 				uni.navigateTo({
 					// url: '../detail/detail?id='+id

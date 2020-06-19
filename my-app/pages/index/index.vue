@@ -15,7 +15,7 @@
 						<text class="btn-text">往来</text>
 					</view>
 				</navigator>
-				<navigator url="inventory" hover-class="navigator-hover">
+				<navigator url="../report/inventorySummary" hover-class="navigator-hover">
 					<view class="btn-box">
 						<view class=" btn btn3">
 						</view>
@@ -39,7 +39,7 @@
 					</view>
 				</view>
 			</view>
-			<!-- <view class="home">
+			<view class="home">
 				<view class="qiun-columns">
 					<view class="qiun-bg-white qiun-title-bar qiun-common-mt" >
 						<view class="qiun-title-dot-light">环形图</view>
@@ -48,7 +48,7 @@
 						<canvas canvas-id="canvasRing" id="canvasRing" class="charts" @touchstart="touchRing2"></canvas>
 					</view>
 				</view>
-			</view> -->
+			</view>
 	</view>
 </template>
 
@@ -74,15 +74,43 @@
 				
 			}
 		},
-		onLoad() {
-		 //图表
-		 _self = this;
-		 this.cWidth=uni.upx2px(750);
-		 this.cHeight=uni.upx2px(500);
-		 this.getServerData();
-		 this.cWidth2=uni.upx2px(750);
-		 this.cHeight2=uni.upx2px(500);
-		 this.getServerData2();
+			
+		async onLoad() {
+			_self = this;
+			await uni.login({
+				provider: 'weixin',
+				success: loginRes=> {							
+					let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=wx4884906061740ce4&secret=49edd121300261a03578613d0e843e26&js_code='+loginRes.code+'&grant_type=authorization_code'
+					uni.request({
+						url: 'http://192.168.3.166:8080/Trade/system_login',
+						method: 'GET',
+						data: {
+							loginType:"mini",openId:'oIHfT5AfXK8VyKWwwLjAmWe7jG8A'},
+						success: res => {
+							this.userName = res.data.userName 
+							// console.log("ss",res.data.userName)
+							// uni.showToast({
+							// 	title: '登录成功'
+							// })
+							if (res.header['Set-Cookie'] != null) {
+							  uni.setStorageSync("sessionid", res.header["Set-Cookie"]);
+							}
+							//图表
+							this.cWidth=uni.upx2px(750);
+							this.cHeight=uni.upx2px(500);
+							this.getServerData();
+							this.cWidth2=uni.upx2px(750);
+							this.cHeight2=uni.upx2px(500);
+							this.getServerData2();
+						},
+						fail: () => {},
+						complete: () => {}
+					});
+					
+					
+				}
+			});
+		 
 		},
 		methods: {
 			getServerData(){

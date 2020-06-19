@@ -17,7 +17,7 @@
 					<!--  #endif -->
 					<view>
 						<!-- open-type="getUserInfo" @getuserinfo="getUserInfo" -->
-						<button class="login-btn" hover-class="btn-hover"  open-type="getUserInfo"  @getuserinfo="mpGetUserInfo">授权登录</button>
+						<button class="login-btn" hover-class="btn-hover"  open-type="getUserInfo"  @getuserinfo="mpGetUserInfo">{{userName || '授权登录'}} </button>
 					</view>
 					
 				</template>
@@ -78,7 +78,8 @@
 	export default {
 		data() {
 			return {
-
+				userName:''
+				
 			}
 		},
 		onLoad() {
@@ -122,7 +123,11 @@
 							data: {
 								loginType:"mini",openId:'oIHfT5AfXK8VyKWwwLjAmWe7jG8A'},
 							success: res => {
-								console.log("ss",res.header['Set-Cookie'])
+								this.userName = res.data.userName 
+								// console.log("ss",res.data.userName)
+								uni.showToast({
+									title: '登录成功'
+								})
 								if (res.header['Set-Cookie'] != null) {
 								  uni.setStorageSync("sessionid", res.header["Set-Cookie"]);
 								}
