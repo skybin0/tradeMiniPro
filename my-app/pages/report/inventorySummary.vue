@@ -56,7 +56,14 @@ export default {
       cWidth2: '',
       cHeight2: '',
       pixelRatio: 1,
-      textarea: ''
+      textarea: '',
+      query: {
+        pageNum: 1,
+        pageSize: 30,
+        customerPkid: 'YZ00001',
+        yearStr: '2020',
+        monthStr: '06'
+      }
     }
   },
   onLoad() {
@@ -81,16 +88,11 @@ export default {
       uni.request({
         url: 'http://192.168.3.166:8080/Trade/run/stat/inventory/selectByPageC',
         method: 'post',
-        header: { Cookie: uni.getStorageSync('sessionid') },
-        data: {
-          pageSize: 30,
-          pageNum: 1,
-          warehousePkid: '',
-          customerPkid: 'YZ00001',
-          yearStr: '2020',
-          monthStr: '06',
-          bdmCategoryPkid: ''
+        header: {
+          Cookie: uni.getStorageSync('sessionid'),
+          'content-type': 'application/x-www-form-urlencoded'
         },
+        data: this.query,
         success: function(res) {
           let ColumnStack = { categories: [], series: [] }
           //这里我后台返回的是数组，所以用等于，如果您后台返回的是单条数据，需要push进去

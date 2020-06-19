@@ -39,7 +39,10 @@ export default {
       url:
         'http://192.168.3.166:8080/Trade/run/asset/history/detail/selectAssetHistory',
       method: 'post',
-      header: { Cookie: uni.getStorageSync('sessionid') },
+      header: {
+        Cookie: uni.getStorageSync('sessionid'),
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       data: { inventoryPkid: option.inventoryPkid },
       success: res => {
         this.data = res.data.obj.assetHistory

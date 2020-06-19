@@ -1,5 +1,6 @@
 <template>
   <view class="content">
+    <!-- 列表 -->
     <uni-list>
       <uni-list-item
         v-for="item in list"
@@ -8,39 +9,70 @@
         :data-id="1"
       />
     </uni-list>
+    <!-- 上拉加载 -->
+    <uni-load-more :status="status" :icon-size="16" :content-text="contentText" />
   </view>
 </template>
 <script>
 var _self
 var canvaLineA = null
 var lastMoveTime = null //最后执行移动的时间戳
+import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue'
 export default {
+  components: {
+    uniLoadMore
+  },
   data() {
     return {
+      TabCur: 0,
       list: [],
-      TabCur: 0
+      last_id: '',
+      reload: false,
+      status: 'more',
+      contentText: {
+        contentdown: '上拉加载更多',
+        contentrefresh: '加载中',
+        contentnomore: '没有更多'
+      },
+      query: {
+        currentPage: 1,
+        pageSize: 30
+      }
     }
   },
   onLoad() {
-    this.listByPage()
+    this.getList()
   },
-
+  onPullDownRefresh() {
+    this.reload = true
+    this.last_id = ''
+    this.getList()
+  },
+  onReachBottom() {
+    this.status = 'more'
+    this.getList()
+  },
   methods: {
-    listByPage() {
+    getList() {
+      if (this.last_id) {
+        //说明已有数据，目前处于上拉加载
+        this.status = 'loading'
+        this.query.currentPage = this.last_id + 1
+      }
       uni.request({
         url: 'http://192.168.2.203:8000/Bankroll/baseinfo/getBanksxh',
         method: 'get',
         header: {
-          Cookie: uni.getStorageSync('sessionid')
+          Cookie: uni.getStorageSync('sessionid'),
+          'content-type': 'application/x-www-form-urlencoded'
         },
-        data: {
-          pageSize: 30,
-          currentPage: 1
-        },
+        data: this.query,
         success: res => {
-          this.list = []
           if (res.data.items) {
-            this.list = res.data.items
+            let data = res.data.items
+            this.list = this.reload ? data : this.list.concat(data)
+            this.last_id = this.query.currentPage
+            this.reload = false
           }
         },
         fail: () => {},
@@ -49,7 +81,6 @@ export default {
     },
     tabChange(index) {
       this.TabCur = index
-      console.log(this.TabCur, 'this.TabCur')
     }
   }
 }

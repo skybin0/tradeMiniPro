@@ -82,14 +82,11 @@ export default {
         url:
           'http://192.168.3.166:8080/Trade/co/coReport/storageCargo/listDailyInventory',
         method: 'post',
-        header: { Cookie: uni.getStorageSync('sessionid') },
-        data: {
-          pageSize: 30,
-          pageNum: 1,
-          custSignerPkid: 'YZ00001',
-          warehousePkid: '',
-          cargoPkid: ''
+        header: {
+          Cookie: uni.getStorageSync('sessionid'),
+          'content-type': 'application/x-www-form-urlencoded'
         },
+        data: { custSignerPkid: 'YZ00001' },
         success: function(res) {
           let ColumnStack = { categories: [], series: [] }
           //这里我后台返回的是数组，所以用等于，如果您后台返回的是单条数据，需要push进去
